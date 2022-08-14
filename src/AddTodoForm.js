@@ -1,11 +1,12 @@
 import React from 'react';
+import InputWithLabel from './InputWithLabel';
 
 const AddTodoForm = ({ onAddTodo }) => {
     const [todoTitle, setTodoTitle] = React.useState('');
 
     const handleTitleChange = (event) => {
         const newTodoTitle = event.target.value;
-        console.log("newTodoTitle is: ", newTodoTitle)
+        // console.log("newTodoTitle is: ", newTodoTitle)
         setTodoTitle(newTodoTitle);
     };
 
@@ -13,29 +14,38 @@ const AddTodoForm = ({ onAddTodo }) => {
       event.preventDefault(); 
     //   let todoTitle = event.target.title.value;
     //   console.log(todoTitle);
-      // confused on this part, the instructions say to pass newTodo as an argument but when I do that it doesn't work 
-    //   props.onAddTodo(newTodo);
       onAddTodo({
           title: todoTitle,
           id: Date.now(),
       });
     //   event.target.reset();
-    setTodoTitle('');
+      setTodoTitle('');
     };
 
     return (
         <form onSubmit={handleAddTodo}>
-            <label  htmlFor="todo">Title:</label>
+            <InputWithLabel
+              // value={todoTitle} 
+              // onChange={handleTitleChange}
+              // I had this ^ and the form wouldn't add items to the todo list, so I changed it to this below instead and it worked:
+              todoTitle={todoTitle} 
+              handleTitleChange={handleTitleChange}
+            >
+              Title:
+            </InputWithLabel>
+            <button type="submit">Add</button>
+            {/* what I had before from lesson 1.5: */}
+            {/* <label  htmlFor="todo">Title:</label>
             <br></br>
             <input 
+            id="todo"
             name="title" 
             type="text"
             value={todoTitle} 
-            id="todo"
             onChange={handleTitleChange}
             />
             <br></br>
-            <button>Add</button>
+            <button type="submit">Add</button> */}
         </form>
     );
 };
