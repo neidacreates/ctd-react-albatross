@@ -3,7 +3,7 @@ import TodoListItem from './TodoListItem';
 
 
 
-const TodoList = ({ todoList, removeTodo }) => (
+const TodoList = ({ todoList }) => (
   
   <ul>
     {todoList.map((item) => {
@@ -11,10 +11,10 @@ const TodoList = ({ todoList, removeTodo }) => (
       <TodoListItem 
         key={item.id} 
         todo={item} 
-        onRemoveTodo={removeTodo}
+        onRemoveTodo={onRemoveTodo}
       />
       );
-    })};
+    })}
   </ul>
 );
 
