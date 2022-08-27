@@ -25,9 +25,6 @@ const AddTodoForm = ({ onAddTodo }) => {
     return (
         <form onSubmit={handleAddTodo}>
             <InputWithLabel
-              // value={todoTitle} 
-              // onChange={handleTitleChange}
-              // I had this ^ and the form wouldn't add items to the todo list, so I changed it to this below instead and it worked:
               todoTitle={todoTitle} 
               handleTitleChange={handleTitleChange}
             >

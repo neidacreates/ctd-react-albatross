@@ -6,7 +6,7 @@ const InputWithLabel = (props) =>
 
     React.useEffect(() => {
         inputRef.current.focus();
-    }, []);
+    });
 
     return (
         <>
